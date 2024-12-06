@@ -1,0 +1,35 @@
+﻿<Window x:Class="POO_practica03.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POO_practica03"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
+    <Grid>
+        <Menu>
+            <MenuItem x:Name="MI_Opciones" Header="Opciones">
+                <MenuItem x:Name="MI_Sumar" Header="Sumar" Click="MI_Sumar_Click"/>
+                <MenuItem x:Name="MI_Calculadora_constructores" Header="Calculadora Constructores"/>
+                <MenuItem x:Name="MI_Calculadora_get_set" Header="calculadora get set"/>
+                <MenuItem x:Name="MI_Figuras_geometricas" Header="Figuras geometricas"/>
+            </MenuItem>
+            <MenuItem x:Name="MI_Datos" Header="Datos">
+                <MenuItem x:Name="miCategorias" Header="Categorias" Click="miCategorias_Click"/>
+                <MenuItem Header="Regiones" Click="MenuItem_Click"/>
+                <MenuItem x:Name="mipaqueteria" Header="Paqueteria" Click="mipaqueteria_Click"/>
+                <MenuItem x:Name="miProvedores" Header="Provedores" Click="miProvedores_Click"/>
+                <MenuItem x:Name="miTerritorios" Header="Territorios" Click="miTerritorios_Click"/>
+                <MenuItem x:Name="miEmpleados" Header="Empleados" Click="miEmpleados_Click" />
+                <MenuItem x:Name="miClientes" Header="Clientes" Click="miClientes_Click" />
+                
+            </MenuItem>
+            <MenuItem x:Name="MI_Movimientos" Header="Movimientos">
+                <MenuItem x:Name="miEmpleadosTerritorios" Header="Empledo Territorio" Click="miEmpleadosTerritorios_Click" />
+                <MenuItem x:Name="miClientesDemografia" Header="Cliente demografia" Click="miClientesDemografia_Click" />
+            </MenuItem>
+            <MenuItem x:Name="MI_Salir" Header="Salir"/>
+        </Menu>
+
+    </Grid>
+</Window>

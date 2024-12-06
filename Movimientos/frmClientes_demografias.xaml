@@ -1,0 +1,55 @@
+﻿<Window x:Class="POO_practica03.Movimientos.frmClientes_demografias"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POO_practica03.Movimientos"
+        mc:Ignorable="d"
+        Title="frmClientes_demografias" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Movimientos">
+                <MenuItem Header="Grabar"/>
+                <MenuItem Header="Buscar"/>
+                <MenuItem Header="Borrar"/>
+                <MenuItem Header="Salir"/>
+            </MenuItem>
+            <MenuItem Header="Salir"/>
+        </Menu>
+        <ToolBar  DockPanel.Dock="Top" HorizontalAlignment="Left" Height="31" Margin="10,21,0,0" VerticalAlignment="Top" Width="153" Background="#FFCCE8ED">
+            <Button x:Name="btngrabar" Height="29" Width="30" Click="btngrabar_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Datos/añadir fichero.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnbuscar" Height="30" Width="29" HorizontalAlignment="Left" Click="btnbuscar_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Datos/buscar.jpg"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnBasura" Height="26" Width="28" Click="btnbasura_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Datos/una bocina.jpeg"/>
+                </Button.Background>
+            </Button>
+        </ToolBar>
+        <Grid>
+            <Label Content="ID Clientes" HorizontalAlignment="Left" Height="27" Margin="108,62,0,0" VerticalAlignment="Top" Width="77"/>
+            <Label Content="Empresa" HorizontalAlignment="Left" Height="26" Margin="108,106,0,0" VerticalAlignment="Top" Width="77"/>
+            <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" Margin="204,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="82" MaxLength="15"/>
+            <TextBox x:Name="txtempresa" HorizontalAlignment="Left" Height="23" Margin="204,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" IsEnabled="False"/>
+            <Button x:Name="btnbuscarclientes" Content="Buscar" HorizontalAlignment="Left" Height="23" Margin="298,66,0,0" VerticalAlignment="Top" Width="69" Click="btnbuscarclientes_Click"/>
+            <Label Content="Nombre" HorizontalAlignment="Left" Height="26" Margin="108,149,0,0" VerticalAlignment="Top" Width="77"/>
+            <TextBox x:Name="txtnombre" HorizontalAlignment="Left" Height="24" Margin="204,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" IsEnabled="False"/>
+            <Label Content="Demografias" HorizontalAlignment="Left" Height="26" Margin="108,191,0,0" VerticalAlignment="Top" Width="77"/>
+            <ComboBox x:Name="cbdemografias" HorizontalAlignment="Left" Height="24" Margin="204,192,0,0" VerticalAlignment="Top" Width="128"/>
+            <Button x:Name="btnagregar" Content="Agregar" HorizontalAlignment="Left" Height="23" Margin="354,192,0,0" VerticalAlignment="Top" Width="69" Click="btnagregar_Click"/>
+            <Button x:Name="btneliminar" Content="Eliminar" HorizontalAlignment="Left" Height="23" Margin="439,192,0,0" VerticalAlignment="Top" Width="69" Click="btneliminar_Click"/>
+            <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="108,222,282,62"/>
+            
+           
+
+
+        </Grid>
+    </DockPanel>
+</Window>
