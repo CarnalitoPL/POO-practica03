@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POO_practica03.Movimientos"
         mc:Ignorable="d"
-        Title="frmEmpleados_territorios" Height="450" Width="800">
+        Title="frmEmpleados_territorios" Height="550" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Movimientos">
@@ -45,7 +45,25 @@
             <ComboBox x:Name="CBTerritorio" HorizontalAlignment="Left" Margin="28,195,0,0" VerticalAlignment="Top" Width="156"/>
             <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="213,196,0,0" VerticalAlignment="Top"/>
             <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="274,197,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.566,1.451"/>
-            <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="31,229,359,55"/>
+            <DataGrid ItemsSource="{Binding EmployeeTerritories}" AutoGenerateColumns="False" Margin="10,232,140,46">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Territory ID" Binding="{Binding TerritoryID}" />
+                    <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeID}" />
+                    <DataGridTextColumn Header="Territory Description" Binding="{Binding TerritoryDescription}" />
+                    <DataGridTextColumn Header="Region ID" Binding="{Binding RegionID}" />
+                    <DataGridTextColumn Header="Region Description" Binding="{Binding RegionDescription}" />
+                    <!-- Columna con botón de edición -->
+                    <DataGridTemplateColumn Header="Acciones">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Editar" Width="70" Margin="5"
+ Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+ CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+                </DataGrid>
 
         </Grid>
     </DockPanel>

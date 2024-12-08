@@ -112,6 +112,7 @@
     <Compile Include="Clases\clSuppliers.cs" />
     <Compile Include="Clases\ClTerritorios.cs" />
     <Compile Include="Clases\Conexion.cs" />
+    <Compile Include="Clases\EmployeeTerritory.cs" />
     <Compile Include="Datos\frmcategorias.xaml.cs">
       <DependentUpon>frmcategorias.xaml</DependentUpon>
     </Compile>

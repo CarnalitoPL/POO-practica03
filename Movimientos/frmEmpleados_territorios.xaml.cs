@@ -1,6 +1,7 @@
 ﻿using POO_practica03.Clases;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -15,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace POO_practica03.Movimientos
 {
@@ -29,6 +31,45 @@ namespace POO_practica03.Movimientos
             cargarTerritorio();
         }
         Clases.conexion c;
+        public ObservableCollection<EmployeeTerritory> EmployeeTerritories { get; set; }
+        private void CargarDatos()
+        {
+            EmployeeTerritories = new ObservableCollection<EmployeeTerritory>();
+            DataContext = this;
+
+            //string connectionString = "tu_cadena_de_conexion"; // Reemplaza con tu cadena de conexión
+            string query = @"
+     SELECT dbo.EmployeeTerritories.TerritoryID, 
+            dbo.EmployeeTerritories.EmployeeID, 
+            dbo.Territories.TerritoryDescription, 
+            dbo.Territories.RegionID, 
+            dbo.Region.RegionDescription
+     FROM dbo.EmployeeTerritories
+     INNER JOIN dbo.Territories ON dbo.EmployeeTerritories.TerritoryID = dbo.Territories.TerritoryID
+     INNER JOIN dbo.Region ON dbo.Territories.RegionID = dbo.Region.RegionID where dbo.EmployeeTerritories.EmployeeID = @EmployeeID ";
+
+            using (SqlConnection connection = new SqlConnection(clGlobales.Globales.globales.miconexion))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                command.Parameters.AddWithValue("@EmployeeID", txtID.Text);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    EmployeeTerritories.Add(new EmployeeTerritory
+                    {
+                        TerritoryID = Convert.ToInt32(reader["TerritoryID"]),
+                        EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
+                        TerritoryDescription = reader["TerritoryDescription"].ToString(),
+                        RegionID = Convert.ToInt32(reader["RegionID"]),
+                        RegionDescription = reader["RegionDescription"].ToString()
+                    });
+                }
+
+                reader.Close();
+            }
+        }
         private void buscarEmpleado()
         {
             string query = "SELECT * FROM Employees WHERE EmployeeID = @EmployeeID";
@@ -90,6 +131,7 @@ namespace POO_practica03.Movimientos
                 {
                     txtID.Text = con.FieldValue;
                     buscarEmpleado();
+                    CargarDatos();
                 }
             }
         }
